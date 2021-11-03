@@ -1,4 +1,5 @@
 const Mongoose = require('mongoose');
+const logger = require('../scripts/logger/files');
 
 const FileSchema = new Mongoose.Schema(
     {
@@ -26,5 +27,12 @@ const FileSchema = new Mongoose.Schema(
         timestamps: true
     }
 );
+
+FileSchema.post('save', (doc) => {
+    logger.log({
+        level: 'info',
+        message: doc 
+    });
+});
 
 module.exports = Mongoose.model('file', FileSchema);

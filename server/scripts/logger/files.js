@@ -7,10 +7,9 @@ const logger = winston.createLogger({
         service: 'file-service'
     },
     transports: [
-        new winston.transports.File({ filename: 'server/logs/files/error.log', level: 'error', maxsize: 10000 }),
-        new winston.transports.File({ filename: 'server/logs/files/info.log', level: 'info', maxsize: 10000 }),
-        new winston.transports.File({ filename: 'server/logs/files/combined.log', maxsize: 10000 }),
-
+        new winston.transports.File({ filename: 'logs/files/error.log', level: 'error', maxsize: 10000 }),
+        new winston.transports.File({ filename: 'logs/files/info.log', level: 'info', maxsize: 10000 }),
+        new winston.transports.File({ filename: 'logs/files/combined.log', maxsize: 10000 }),
     ],
 });
 
