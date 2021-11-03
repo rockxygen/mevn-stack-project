@@ -8,6 +8,6 @@ config();
 app.use(expresss.json());
 app.use(helmet());
 
-app.listen(1717, () => {
-    console.log('Server is running on 1717...');
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on ${process.env.PORT}...`);
 });
