@@ -10,9 +10,10 @@ loader();
 
 app.use(expresss.json());
 app.use(helmet());
+app.use('/uploads', expresss.static(__dirname + '/uploads'));
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on ${process.env.PORT}...`);
-    
+
     app.use('/api/files', FileRoutes);
 });

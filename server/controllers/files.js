@@ -17,6 +17,11 @@ const index = (req, res) => {
     })
 }
 
+const upload = (req, res) => {
+    console.log(req.file);
+}
+
 module.exports = {
     index,
+    upload,
 }
