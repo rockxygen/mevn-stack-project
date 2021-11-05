@@ -7,10 +7,14 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         // const fileName = file.originalname.split('')[0];
-        const fileName = Math.floor(Math.random() * 1000000000);
-        cb(null, fileName + '_' + Date.now().toString() + '_' + Date.now().toString() + path.extname(file.originalname));
+        const fileName = generateRandom(1000000000);
+        cb(null, fileName + '_' + generateRandom(Date.now().toString()) + '_' + generateRandom(Date.now().toString()) + path.extname(file.originalname));
     }
 });
+
+const generateRandom = (num) => {
+    return Math.floor(Math.random() * num);
+}
 
 const uploadFile = multer({storage});
 
