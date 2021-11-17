@@ -1,43 +1,23 @@
 <template>
   <div id="app">
-    <header>
-      <nav><h1>Files Directory</h1></nav>
-    </header>
-    <section>
-      <div class="file">
-        <span class="name">Name</span>
-        <span class="url">
-          <a href="#">fileUrl</a>
-        </span>
-        <button>Detail</button>
-      </div>
-      <div class="file">
-        <span>Name</span>
-        <span>URL</span>
-      </div>
-      <div class="file">
-        <span>Name</span>
-        <span>URL</span>
-      </div>
-      <div class="file">
-        <span>Name</span>
-        <span>URL</span>
-      </div>
-      <div class="file">
-        <span>Name</span>
-        <span>URL</span>
-      </div>
-    </section>
+    <NavBar />
+    <router-view />
   </div>
 </template>
 
 <script>
+import NavBar from '@/components/NavBar'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    NavBar
+  }
 }
 </script>
 
 <style>
+
 * {
   padding: 0;
   margin: 0;
@@ -47,52 +27,67 @@ export default {
   box-sizing: border-box;
 }
 
-header nav {
-  background: cadetblue;
-  min-height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 700;
-  color: white;
-}
-
-section {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.file {
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid #dedede;
-  border-right: 1px solid #dedede;
-  padding: 20px;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.file .name {
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.file .url a {
-  text-decoration: none;
-  color: #2c3e50;
-}
-
-.file button {
-  width: 10vh;
-  padding: 10px;
+html, body {
+  animation: page-load 1s ease-in-out;
 }
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+}
+
+#app nav {
+  height: 70px;
+  background: rebeccapurple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#app nav h1 {
+  font-size: 27px;
+  font-weight: 700;
+  color: #fff;
+}
+
+section .files {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin: 15px;
+}
+
+section .files .file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 200px;
+  min-height: 150px;
+  padding: 15px 0;
+  border: 1px solid #2c3e50;
+}
+
+button {
+  padding: 10px;
+  color: white;
+  background: rebeccapurple;
+  cursor: pointer;
+  transition: 300ms all;
+}
+
+button:hover {
+  opacity: .7;
+}
+
+@keyframes page-load {
+  to {
+    opacity: 1;
+  }
+  from {
+    opacity: 0;
+  }
 }
 </style>
