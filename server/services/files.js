@@ -5,8 +5,14 @@ const _getAll = () => {
     return File.find({});
 }
 
-const _upload = () => {
-    // return upload.single('file');
+const _upload = (data) => {
+    const reqData = {
+        fileName: '...',
+        fileUrl: data.path,
+        fileType: data.mimetype
+    }
+    const file = new File(reqData);
+    return file.save();
 }
 
 module.exports = {

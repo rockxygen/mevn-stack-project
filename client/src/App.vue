@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style>
-
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css');
 * {
   padding: 0;
   margin: 0;

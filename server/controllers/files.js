@@ -1,5 +1,5 @@
 const httpStatus = require("http-status");
-const { _getAll } = require("../services/files");
+const { _getAll, _upload } = require("../services/files");
 
 const index = (req, res) => {
     _getAll().then((resp) => {
@@ -18,7 +18,19 @@ const index = (req, res) => {
 }
 
 const upload = (req, res) => {
-    console.log(req.file);
+    _upload(req.file).then((resp) => {
+        res.status(httpStatus.OK).send({
+            data: resp,
+            status_code: res.statusCode
+        });
+    }).catch((err) => {
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
+            error: {
+                message: err
+            },
+            status_code: res.statusCode
+        });
+    })
 }
 
 module.exports = {
